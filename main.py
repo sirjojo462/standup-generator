@@ -3,9 +3,26 @@ import openai
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from datetime import datetime
-
+import logging  # Import logging module
 from dotenv import load_dotenv
 import os
+from prometheus_flask_exporter import PrometheusMetrics
+from pythonjsonlogger import jsonlogger
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,  # Set log level to INFO
+    format='%(asctime)s - %(levelname)s - %(message)s',  # Log format
+    handlers=[
+        logging.StreamHandler(),  # Log to console
+        logging.FileHandler("app.log", mode='a')  # Log to a file
+    ]
+)
+
+log_handler = logging.StreamHandler()
+formatter = jsonlogger.JsonFormatter('%(asctime)s %(levelname)s %(message)s')
+log_handler.setFormatter(formatter)
+logging.getLogger().addHandler(log_handler)
 
 load_dotenv()  # Load environment variables from .env
 openai.api_key = os.getenv("OPENAI_API_KEY")
@@ -13,11 +30,15 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 app = Flask(__name__)
 CORS(app)
 
+metrics = PrometheusMetrics(app)
+metrics.info('app_info', 'Application info', version='1.0.0')
+
 # Store standup history (in production, use a database)
 standup_history = {}
 
 @app.route('/')
 def home():
+    logging.info("Home endpoint accessed")  # Log access to the home endpoint
     return """
     <html>
     <head>
@@ -34,9 +55,11 @@ def home():
 def generate_standup():
     """Endpoint that generates standup summaries"""
     data = request.json
+    logging.info("Received request to generate standup: %s", data)  # Log incoming request data
     
     # Validate input
     if not data or 'channel_id' not in data:
+        logging.warning("Invalid request: Missing channel_id parameter")  # Log warning for invalid input
         return jsonify({"error": "Missing channel_id parameter"}), 400
     
     channel_id = data['channel_id']
@@ -48,44 +71,4 @@ def generate_standup():
     summary = f"""🚀 Standup Summary for Channel {channel_id} - {timestamp}
 
 ✅ Completed Yesterday:
-- Fixed authentication bug (JIRA-123)
-- Implemented new dashboard UI
-- Conducted code reviews
-
-📅 Planning Today:
-- Refactor notification service
-- Write integration tests
-- Team sync meeting at 2pm
-
-🛑 Blockers:
-- Need API docs from backend team
-- Waiting on design assets
-
-💡 Suggestions:
-- Consider using Redis for caching
-- Schedule tech debt discussion"""
-    
-    # Store in history
-    standup_history[channel_id] = {
-        "timestamp": timestamp,
-        "summary": summary
-    }
-    
-    return jsonify({
-        "status": "success",
-        "channel_id": channel_id,
-        "summary": summary,
-        "generated_at": timestamp
-    })
-
-@app.route('/standup/history', methods=['GET'])
-def get_history():
-    """Returns all generated standups"""
-    return jsonify({
-        "count": len(standup_history),
-        "standups": standup_history
-    })
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
- 
+- Fixed authentication bug (JIRA
