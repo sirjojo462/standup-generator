@@ -2,61 +2,197 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JJ AI Daily Standup Generator</title>
   <style>
+    :root {
+      --background-color: #f4f4f4;
+      --text-color: #333;
+      --container-background: #fff;
+      --button-background: #007BFF;
+      --button-hover: #0056b3;
+    }
+
     body {
       font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
+
+    .container {
+      background: var(--container-background);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+
     h1 {
-      color: #333;
+      text-align: center;
+      margin-bottom: 20px;
     }
-    input, button {
+
+    label {
+      font-weight: bold;
+      margin-top: 10px;
+      display: block;
+    }
+
+    input, button, textarea {
       padding: 10px;
       margin-top: 10px;
       width: 100%;
       font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
+
+    button {
+      background-color: var(--button-background);
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--button-hover);
+    }
+
     textarea {
-      width: 100%;
-      height: 200px;
-      margin-top: 20px;
-      padding: 10px;
-      font-family: monospace;
+      height: 150px;
+      resize: none;
+    }
+
+    .theme-toggle {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+
+      input, button, textarea {
+        font-size: 14px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <h1>JJ AI Standup Generator</h1>
+  <div class="container">
+    <h1>JJ AI Standup Generator</h1>
 
-  <label for="channelId">Slack Channel ID:</label>
-  <input type="text" id="channelId" placeholder="Enter channel ID">
+    <button onclick="login()">Login</button>
 
-  <button onclick="generateStandup()">Generate Standup</button>
+    <label for="channelId">Slack Channel ID:</label>
+    <input type="text" id="channelId" placeholder="Enter channel ID">
 
-  <textarea id="output" placeholder="Standup summary will appear here..." readonly></textarea>
+    <button onclick="generateStandup()">Generate Standup</button>
+
+    <textarea id="output" placeholder="Standup summary will appear here..." readonly></textarea>
+
+    <div class="theme-toggle">
+      <button onclick="toggleTheme()">Toggle Theme</button>
+    </div>
+  </div>
+
+  <footer style="text-align: center; margin-top: 20px; font-size: 14px; color: #777;">
+    &copy; 2025 JJ AI Standup Generator. All rights reserved.
+  </footer>
 
   <script>
+    let jwtToken = ""; // Variable to store the JWT token
+
+    async function login() {
+      const username = prompt("Enter your username:");
+      const password = prompt("Enter your password:");
+
+      try {
+        const response = await fetch("http://localhost:5000/login", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ username, password })
+        });
+
+        if (!response.ok) {
+          throw new Error(`Login failed: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        jwtToken = data.access_token; // Store the JWT token
+        alert("Login successful!");
+      } catch (err) {
+        alert("Error: " + err.message);
+      }
+    }
+
     async function generateStandup() {
       const channelId = document.getElementById("channelId").value;
       const output = document.getElementById("output");
+
+      if (!jwtToken) {
+        output.value = "Error: You must log in first.";
+        return;
+      }
+
+      if (!channelId) {
+        output.value = "Error: Channel ID is required.";
+        return;
+      }
+
       output.value = "Generating summary...";
 
       try {
         const response = await fetch("http://localhost:5000/standup", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${jwtToken}` // Include the JWT token
           },
           body: JSON.stringify({ channel_id: channelId })
         });
+
+        if (!response.ok) {
+          throw new Error(`Error: ${response.statusText}`);
+        }
 
         const data = await response.json();
         output.value = data.summary || "No summary returned.";
       } catch (err) {
         output.value = "Error: " + err.message;
+      }
+    }
+
+    function toggleTheme() {
+      const root = document.documentElement;
+      const currentBackground = getComputedStyle(root).getPropertyValue('--background-color').trim();
+
+      if (currentBackground === '#f4f4f4') {
+        // Switch to dark theme
+        root.style.setProperty('--background-color', '#333');
+        root.style.setProperty('--text-color', '#f4f4f4');
+        root.style.setProperty('--container-background', '#444');
+        root.style.setProperty('--button-background', '#555');
+        root.style.setProperty('--button-hover', '#777');
+      } else {
+        // Switch to light theme
+        root.style.setProperty('--background-color', '#f4f4f4');
+        root.style.setProperty('--text-color', '#333');
+        root.style.setProperty('--container-background', '#fff');
+        root.style.setProperty('--button-background', '#007BFF');
+        root.style.setProperty('--button-hover', '#0056b3');
       }
     }
   </script>

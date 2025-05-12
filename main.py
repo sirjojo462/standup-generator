@@ -2,43 +2,54 @@
 import openai
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from datetime import datetime
-import logging  # Import logging module
+import logging
 from dotenv import load_dotenv
 import os
-from prometheus_flask_exporter import PrometheusMetrics
-from pythonjsonlogger import jsonlogger
+from slack_sdk import WebClient
+from slack_sdk.errors import SlackApiError
+import sqlite3
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO,  # Set log level to INFO
-    format='%(asctime)s - %(levelname)s - %(message)s',  # Log format
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.StreamHandler(),  # Log to console
-        logging.FileHandler("app.log", mode='a')  # Log to a file
+        logging.StreamHandler(),
+        logging.FileHandler("app.log", mode='a')
     ]
 )
 
-log_handler = logging.StreamHandler()
-formatter = jsonlogger.JsonFormatter('%(asctime)s %(levelname)s %(message)s')
-log_handler.setFormatter(formatter)
-logging.getLogger().addHandler(log_handler)
-
 load_dotenv()  # Load environment variables from .env
 openai.api_key = os.getenv("OPENAI_API_KEY")
+slack_client = WebClient(token=os.getenv("SLACK_BOT_TOKEN"))
 
 app = Flask(__name__)
 CORS(app)
 
-metrics = PrometheusMetrics(app)
-metrics.info('app_info', 'Application info', version='1.0.0')
+# JWT Configuration
+app.config['JWT_SECRET_KEY'] = 'your-secret-key'  # Replace with a strong secret key
+jwt = JWTManager(app)
 
 # Store standup history (in production, use a database)
 standup_history = {}
 
+# Initialize SQLite database
+conn = sqlite3.connect("standup.db", check_same_thread=False)
+cursor = conn.cursor()
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS standups (
+        channel_id TEXT,
+        timestamp TEXT,
+        summary TEXT
+    )
+""")
+conn.commit()
+
 @app.route('/')
 def home():
-    logging.info("Home endpoint accessed")  # Log access to the home endpoint
+    logging.info("Home endpoint accessed")
     return """
     <html>
     <head>
@@ -51,24 +62,20 @@ def home():
     </html>
     """
 
-@app.route('/standup', methods=['POST'])
-def generate_standup():
-    """Endpoint that generates standup summaries"""
+@app.route('/login', methods=['POST'])
+def login():
+    """Login endpoint to authenticate users and issue JWT tokens"""
     data = request.json
-    logging.info("Received request to generate standup: %s", data)  # Log incoming request data
-    
-    # Validate input
-    if not data or 'channel_id' not in data:
-        logging.warning("Invalid request: Missing channel_id parameter")  # Log warning for invalid input
-        return jsonify({"error": "Missing channel_id parameter"}), 400
-    
-    channel_id = data['channel_id']
-    
-    # Generate timestamp for the standup
-    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    
-    # Create standup summary (in a real app, this would call Slack API + AI)
-    summary = f"""🚀 Standup Summary for Channel {channel_id} - {timestamp}
+    username = data.get('username')
+    password = data.get('password')
 
-✅ Completed Yesterday:
-- Fixed authentication bug (JIRA
+    # Replace this with your actual user authentication logic
+    if username == "admin" and password == "01234":  # Example credentials
+        access_token = create_access_token(identity=username)
+        return jsonify({"access_token": access_token}), 200
+
+if __name__ == '__main__':
+    logging.info("Starting the Flask application")
+    print("Flask application is starting...")
+    app.run(host='0.0.0.0', port=5000, debug=True)
+

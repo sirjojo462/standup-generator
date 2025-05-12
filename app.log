@@ -10,3 +10,143 @@
 2025-05-07 14:38:52,727 - INFO -  * Debugger PIN: 139-139-190
 2025-05-07 14:50:35,632 - INFO -  * Detected change in 'C:\\Users\\user\\Documents\\GitHub\\standup-generator\\main.py', reloading
 2025-05-07 14:50:36,143 - INFO -  * Restarting with stat
+2025-05-09 14:11:47,541 - INFO - Starting the Flask application
+2025-05-09 14:11:54,699 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.100.62:5000
+2025-05-09 14:11:54,700 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-09 14:11:54,778 - INFO -  * Restarting with stat
+2025-05-09 14:11:57,244 - INFO - Starting the Flask application
+2025-05-09 14:11:57,278 - WARNING -  * Debugger is active!
+2025-05-09 14:11:57,385 - INFO -  * Debugger PIN: 139-139-190
+2025-05-09 14:12:46,034 - INFO - Home endpoint accessed
+2025-05-09 14:12:46,035 - INFO - 127.0.0.1 - - [09/May/2025 14:12:46] "GET / HTTP/1.1" 200 -
+2025-05-09 14:12:46,090 - INFO - Home endpoint accessed
+2025-05-09 14:12:46,092 - INFO - 127.0.0.1 - - [09/May/2025 14:12:46] "GET / HTTP/1.1" 200 -
+2025-05-09 14:12:54,726 - INFO - 127.0.0.1 - - [09/May/2025 14:12:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-09 14:12:54,783 - INFO - 127.0.0.1 - - [09/May/2025 14:12:54] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-05-09 14:35:41,553 - INFO -  * Detected change in 'C:\\Users\\user\\Documents\\GitHub\\standup-generator\\main.py', reloading
+2025-05-09 14:35:42,088 - INFO -  * Restarting with stat
+2025-05-09 14:35:58,799 - INFO - Starting the Flask application
+2025-05-09 14:35:59,234 - WARNING -  * Debugger is active!
+2025-05-09 14:35:59,239 - INFO -  * Debugger PIN: 139-139-190
+2025-05-09 14:36:38,898 - INFO -  * Detected change in 'C:\\Users\\user\\Documents\\GitHub\\standup-generator\\main.py', reloading
+2025-05-09 14:36:39,208 - INFO -  * Restarting with stat
+2025-05-09 14:36:41,203 - INFO - Starting the Flask application
+2025-05-09 14:36:41,253 - WARNING -  * Debugger is active!
+2025-05-09 14:36:41,268 - INFO -  * Debugger PIN: 139-139-190
+2025-05-09 14:53:50,869 - INFO - 127.0.0.1 - - [09/May/2025 14:53:50] "OPTIONS /standup HTTP/1.1" 200 -
+2025-05-09 14:53:50,977 - INFO - Received request to generate standup: {'channel_id': '12345'}
+2025-05-09 14:53:50,980 - INFO - Standup generated for channel_id 12345
+2025-05-09 14:53:50,985 - INFO - 127.0.0.1 - - [09/May/2025 14:53:50] "POST /standup HTTP/1.1" 200 -
+2025-05-09 14:54:02,361 - INFO - History endpoint accessed
+2025-05-09 14:54:02,362 - INFO - 127.0.0.1 - - [09/May/2025 14:54:02] "GET /standup/history HTTP/1.1" 200 -
+2025-05-09 15:00:50,402 - INFO - 127.0.0.1 - - [09/May/2025 15:00:50] "OPTIONS /standup HTTP/1.1" 200 -
+2025-05-09 15:00:50,652 - INFO - Received request to generate standup: {'channel_id': '12345'}
+2025-05-09 15:00:50,654 - INFO - Standup generated for channel_id 12345
+2025-05-09 15:00:50,657 - INFO - 127.0.0.1 - - [09/May/2025 15:00:50] "POST /standup HTTP/1.1" 200 -
+2025-05-09 15:18:57,878 - INFO -  * Detected change in 'C:\\Users\\user\\Documents\\GitHub\\standup-generator\\main.py', reloading
+2025-05-09 15:19:03,963 - INFO -  * Restarting with stat
+2025-05-09 15:19:28,164 - INFO - Starting the Flask application
+2025-05-09 15:19:28,724 - WARNING -  * Debugger is active!
+2025-05-09 15:19:28,765 - INFO -  * Debugger PIN: 139-139-190
+2025-05-09 15:19:56,480 - INFO - Starting the Flask application
+2025-05-09 15:19:56,608 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.100.62:5000
+2025-05-09 15:19:56,640 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-09 15:19:56,643 - INFO -  * Restarting with stat
+2025-05-09 15:19:58,917 - INFO - Starting the Flask application
+2025-05-09 15:19:58,941 - WARNING -  * Debugger is active!
+2025-05-09 15:19:58,946 - INFO -  * Debugger PIN: 139-139-190
+2025-05-09 15:20:41,439 - INFO -  * Detected change in 'C:\\Users\\user\\Documents\\GitHub\\standup-generator\\main.py', reloading
+2025-05-09 15:20:41,680 - INFO -  * Restarting with stat
+2025-05-09 15:20:41,693 - INFO -  * Detected change in 'C:\\Users\\user\\Documents\\GitHub\\standup-generator\\main.py', reloading
+2025-05-09 15:20:41,943 - INFO -  * Restarting with stat
+2025-05-09 15:20:44,009 - INFO - Starting the Flask application
+2025-05-09 15:20:44,030 - WARNING -  * Debugger is active!
+2025-05-09 15:20:44,036 - INFO -  * Debugger PIN: 139-139-190
+2025-05-09 15:20:44,468 - INFO - Starting the Flask application
+2025-05-09 15:20:44,488 - WARNING -  * Debugger is active!
+2025-05-09 15:20:44,491 - INFO -  * Debugger PIN: 139-139-190
+2025-05-09 15:20:47,127 - INFO -  * Detected change in 'C:\\Users\\user\\Documents\\GitHub\\standup-generator\\main.py', reloading
+2025-05-09 15:20:47,373 - INFO -  * Restarting with stat
+2025-05-09 15:20:47,535 - INFO -  * Detected change in 'C:\\Users\\user\\Documents\\GitHub\\standup-generator\\main.py', reloading
+2025-05-09 15:20:47,790 - INFO -  * Restarting with stat
+2025-05-09 15:20:49,602 - INFO - Starting the Flask application
+2025-05-09 15:20:49,625 - WARNING -  * Debugger is active!
+2025-05-09 15:20:49,629 - INFO -  * Debugger PIN: 139-139-190
+2025-05-09 15:20:49,960 - INFO - Starting the Flask application
+2025-05-09 15:20:49,982 - WARNING -  * Debugger is active!
+2025-05-09 15:20:49,985 - INFO -  * Debugger PIN: 139-139-190
+2025-05-09 15:22:04,417 - INFO -  * Detected change in 'C:\\Users\\user\\Documents\\GitHub\\standup-generator\\main.py', reloading
+2025-05-09 15:22:04,629 - INFO -  * Restarting with stat
+2025-05-09 15:22:04,824 - INFO -  * Detected change in 'C:\\Users\\user\\Documents\\GitHub\\standup-generator\\main.py', reloading
+2025-05-09 15:22:05,051 - INFO -  * Restarting with stat
+2025-05-09 15:22:08,862 - INFO - Starting the Flask application
+2025-05-09 15:22:08,861 - INFO - Starting the Flask application
+2025-05-09 15:22:08,935 - WARNING -  * Debugger is active!
+2025-05-09 15:22:08,939 - WARNING -  * Debugger is active!
+2025-05-09 15:22:08,941 - INFO -  * Debugger PIN: 139-139-190
+2025-05-09 15:22:08,946 - INFO -  * Debugger PIN: 139-139-190
+2025-05-09 15:29:15,356 - INFO -  * Detected change in 'C:\\Users\\user\\Documents\\GitHub\\standup-generator\\main.py', reloading
+2025-05-09 15:29:15,437 - INFO -  * Detected change in 'C:\\Users\\user\\Documents\\GitHub\\standup-generator\\main.py', reloading
+2025-05-09 15:29:15,756 - INFO -  * Restarting with stat
+2025-05-09 15:29:15,804 - INFO -  * Restarting with stat
+2025-05-09 15:44:32,717 - INFO - Starting the Flask application
+2025-05-09 15:44:32,760 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.100.62:5000
+2025-05-09 15:44:32,761 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-09 15:44:32,764 - INFO -  * Restarting with stat
+2025-05-09 15:44:34,810 - INFO - Starting the Flask application
+2025-05-09 15:44:34,835 - WARNING -  * Debugger is active!
+2025-05-09 15:44:34,839 - INFO -  * Debugger PIN: 139-139-190
+2025-05-09 15:46:23,655 - INFO - 127.0.0.1 - - [09/May/2025 15:46:23] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 15:46:31,925 - INFO - 127.0.0.1 - - [09/May/2025 15:46:31] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 15:46:32,971 - INFO - 127.0.0.1 - - [09/May/2025 15:46:32] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 15:46:34,129 - INFO - 127.0.0.1 - - [09/May/2025 15:46:34] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 15:46:35,019 - INFO - 127.0.0.1 - - [09/May/2025 15:46:35] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 15:46:43,416 - INFO - 127.0.0.1 - - [09/May/2025 15:46:43] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 15:46:44,250 - INFO - 127.0.0.1 - - [09/May/2025 15:46:44] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 15:46:54,670 - INFO - 127.0.0.1 - - [09/May/2025 15:46:54] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 15:46:58,242 - INFO - 127.0.0.1 - - [09/May/2025 15:46:58] "[33mGET /standup/history HTTP/1.1[0m" 404 -
+2025-05-09 15:50:44,814 - INFO - Home endpoint accessed
+2025-05-09 15:50:44,816 - INFO - 127.0.0.1 - - [09/May/2025 15:50:44] "GET / HTTP/1.1" 200 -
+2025-05-09 15:56:49,541 - INFO - 127.0.0.1 - - [09/May/2025 15:56:49] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 15:57:07,449 - INFO - 127.0.0.1 - - [09/May/2025 15:57:07] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 15:57:07,705 - INFO - 127.0.0.1 - - [09/May/2025 15:57:07] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 15:57:08,886 - INFO - 127.0.0.1 - - [09/May/2025 15:57:08] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 15:59:45,061 - INFO - Starting the Flask application
+2025-05-09 15:59:45,105 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.100.62:5000
+2025-05-09 15:59:45,106 - INFO - [33mPress CTRL+C to quit[0m
+2025-05-09 15:59:45,108 - INFO -  * Restarting with stat
+2025-05-09 15:59:47,117 - INFO - Starting the Flask application
+2025-05-09 15:59:47,147 - WARNING -  * Debugger is active!
+2025-05-09 15:59:47,154 - INFO -  * Debugger PIN: 139-139-190
+2025-05-09 16:16:08,236 - INFO - 127.0.0.1 - - [09/May/2025 16:16:08] "OPTIONS /login HTTP/1.1" 200 -
+2025-05-09 16:16:08,487 - INFO - 127.0.0.1 - - [09/May/2025 16:16:08] "POST /login HTTP/1.1" 200 -
+2025-05-09 16:16:26,419 - INFO - 127.0.0.1 - - [09/May/2025 16:16:26] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 16:17:03,657 - INFO - 127.0.0.1 - - [09/May/2025 16:17:03] "OPTIONS /login HTTP/1.1" 200 -
+2025-05-09 16:17:03,909 - INFO - 127.0.0.1 - - [09/May/2025 16:17:03] "POST /login HTTP/1.1" 200 -
+2025-05-09 16:17:23,417 - INFO - 127.0.0.1 - - [09/May/2025 16:17:23] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 16:17:24,732 - INFO - 127.0.0.1 - - [09/May/2025 16:17:24] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 16:17:24,754 - INFO - 127.0.0.1 - - [09/May/2025 16:17:24] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 16:17:24,987 - INFO - 127.0.0.1 - - [09/May/2025 16:17:24] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 16:17:25,024 - INFO - 127.0.0.1 - - [09/May/2025 16:17:25] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 16:17:25,427 - INFO - 127.0.0.1 - - [09/May/2025 16:17:25] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 16:17:26,217 - INFO - 127.0.0.1 - - [09/May/2025 16:17:26] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 16:17:26,242 - INFO - 127.0.0.1 - - [09/May/2025 16:17:26] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 16:17:26,519 - INFO - 127.0.0.1 - - [09/May/2025 16:17:26] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 16:17:27,182 - INFO - 127.0.0.1 - - [09/May/2025 16:17:27] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 16:17:27,433 - INFO - 127.0.0.1 - - [09/May/2025 16:17:27] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 16:17:27,992 - INFO - 127.0.0.1 - - [09/May/2025 16:17:27] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
+2025-05-09 16:18:32,916 - INFO - 127.0.0.1 - - [09/May/2025 16:18:32] "OPTIONS /login HTTP/1.1" 200 -
+2025-05-09 16:18:33,166 - INFO - 127.0.0.1 - - [09/May/2025 16:18:33] "POST /login HTTP/1.1" 200 -
+2025-05-09 16:18:47,221 - INFO - 127.0.0.1 - - [09/May/2025 16:18:47] "[33mOPTIONS /standup HTTP/1.1[0m" 404 -
