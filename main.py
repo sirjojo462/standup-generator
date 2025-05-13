@@ -25,6 +25,10 @@ load_dotenv()  # Load environment variables from .env
 openai.api_key = os.getenv("OPENAI_API_KEY")
 slack_client = WebClient(token=os.getenv("SLACK_BOT_TOKEN"))
 
+print("OPENAI_API_KEY:", os.getenv("OPENAI_API_KEY"))
+print("SLACK_BOT_TOKEN:", os.getenv("SLACK_BOT_TOKEN"))
+print("JWT_SECRET_KEY:", os.getenv("JWT_SECRET_KEY"))
+
 app = Flask(__name__)
 CORS(app)
 
